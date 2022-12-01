@@ -4,7 +4,9 @@ project(ISR_CICD_Labwork)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(calculator)
+add_subdirectory(calc)
+
+add_executable(main main.cpp calc/Calc.h calc/Calc.cpp)
 
 enable_testing()
 add_subdirectory(tests)
