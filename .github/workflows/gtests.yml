@@ -19,4 +19,4 @@ jobs:
     - name: make
       run: cd build && make
     - name: run tests
-      run: ./tests/calc_tests
+      run: ./build/tests/calc_tests
