@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install gtest manually
-      run: git clone https://github.com/Vaniog/IST-CICD-Labwork
+      run: git clone https://github.com/Vaniog/IST-CICD-Labwork && sudo apt-get install libgtest-dev
     - uses: actions/checkout@v1
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ../tests
     - name: make
       run: cd build && make
