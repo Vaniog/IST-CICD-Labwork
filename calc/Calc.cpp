@@ -12,23 +12,19 @@ int Calc::Eval(const std::vector<std::string>& vec) {
     if (vec.size() != 3) {
         std::cout << "Wrong input\n";
         exit(-1);
-        return 0;
     }
     int x = std::stoi(vec[0]);
     int y = std::stoi(vec[2]);
-
+    int ans = 0;
     if (vec[1] == "+") {
-        return x + y;
-    }
-    if (vec[1] == "-") {
-        return x - y;
-    }
-    if (vec[1] == "*") {
-        return x * y;
-    }
-    if (vec[1] == "/") {
-        return x / y;
+        ans = x + y;
+    } else if (vec[1] == "-") {
+        ans = x - y;
+    } else if (vec[1] == "*") {
+        ans = x * y;
+    } else if (vec[1] == "/") {
+        ans = x / y;
     }
 
-    return 0;
+    return ans;
 }
