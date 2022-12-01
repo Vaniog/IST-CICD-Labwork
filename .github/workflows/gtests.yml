@@ -2,9 +2,9 @@ name: tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -15,6 +15,6 @@ jobs:
       run: git clone https://github.com/Vaniog/IST-CICD-Labwork && sudo apt-get install libgtest-dev
     - uses: actions/checkout@v1
     - name: configure
-      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ../tests
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
     - name: make
       run: cd build && make
