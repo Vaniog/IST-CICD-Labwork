@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.12)
+
 project(ISR_CICD_Labwork)
 
-set(CMAKE_CXX_STANDARD 14)
-
-add_executable(ISR_CICD_Labwork main.cpp calculator/Calculator.cpp calculator/Calculator.h tests/calc_tests.cpp)
+set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(calculator)
 
