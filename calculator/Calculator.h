@@ -3,5 +3,5 @@
 
 class Calculator {
 public:
-    static int Calculate(const std::string& to_calc);
+    static int GetSum(const int& lh, const int& rh);
 };

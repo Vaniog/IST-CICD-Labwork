@@ -1,11 +1,17 @@
 #include "../calculator/Calculator.h"
 
 #include <gtest/gtest.h>
+#include <random>
 
-TEST(CalcTestSuit, FirstTest){
-    ASSERT_EQ(Calculator::Calculate("12"), 3);
+TEST(CalcTestSuit, SimpleSumTest){
+    ASSERT_EQ(Calculator::GetSum(2, 2), 4);
 }
 
-TEST(CalcTestSuit, SecondTest){
-    ASSERT_FALSE(Calculator::Calculate("12") == 4);
+TEST(CalcTestSuit, SumTest){
+    srand(time(nullptr));
+    for (int i = 0; i < 1000; i++) {
+        int x = rand();
+        int y = rand();
+        ASSERT_EQ(Calculator::GetSum(x, y), x + y);
+    }
 }
