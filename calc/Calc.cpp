@@ -1,4 +1,11 @@
 #include "Calc.h"
+//menya zovut Aytal
+/// Eval the expression
+/// \param argc (size of argv)
+/// \param argv (string array)
+/// \return result of operation
+///
+/// \examples Calc::Eval(3, ["3", "+", "2"]) -> 5
 
 int Calc::Eval(int argc, char** argv) {
     std::vector<std::string> vec;
@@ -7,6 +14,12 @@ int Calc::Eval(int argc, char** argv) {
     }
     return Eval(vec);
 }
+
+/// Eval the expression
+/// \param vec (vector of strings)
+/// \return result of operation
+///
+/// \examples Calc::Eval("3 + 2") -> 5
 
 int Calc::Eval(const std::vector<std::string>& vec) {
     if (vec.size() != 3) {
