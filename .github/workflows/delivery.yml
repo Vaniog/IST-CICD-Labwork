@@ -13,6 +13,8 @@ jobs:
             - name: install gtest library
               run: sudo apt-get install libgtest-dev
             - uses: actions/checkout@v1
+              with:
+                  token: ${{ secrets.access-token }}
             - name: create build files
               run: mkdir build && cd build && cmake ..
             - name: make
@@ -22,12 +24,13 @@ jobs:
                   mkdir isr 
                   cp build/main isr/main
                   zip -r isr.zip isr
-            - name: Set env
+            - name: set release version
               run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-            - name: Test
+
+            - name: publishing
+              with:
               run: |
-                  echo $RELEASE_VERSION
-                  echo ${{ env.RELEASE_VERSION }}
+                  gh release create ${{ env.RELEASE_VERSION }} isr.zip --notes "Release by actions"
         #- name : publishing
         #  run:
         #    gh release create
