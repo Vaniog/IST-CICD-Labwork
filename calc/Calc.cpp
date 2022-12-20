@@ -32,7 +32,7 @@ int Calc::Eval(const std::vector<std::string>& vec) {
     if (vec[1] == "+") {
         ans = x + y;
     } else if (vec[1] == "-") {
-        ans = x - y;
+        ans = x / y;
     } else if (vec[1] == "*") {
         ans = x * y;
     } else if (vec[1] == "/") {
