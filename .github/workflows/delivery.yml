@@ -1,38 +1,38 @@
 name: delivery
 
 on:
-  push:
-    branches: [ main ]
-    tags:
-     - '*'
-  workflow_dispatch:
+    push:
+        branches: [main]
+        tags:
+            - "*"
+    workflow_dispatch:
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-    - name: install gtest library
-      run: sudo apt-get install libgtest-dev
-    - uses: actions/checkout@v1
-    - name: create build files
-      run: mkdir build && cd build && cmake ..
-    - name: make
-      run: cd build && make
-    - name: packing
-      run: 
-        mkdir isr 
-        cp build/main isr/main
-        zip -r isr.zip isr
-    - name: installing gh
-      run: |
-        sudo apt install gh
-      
-    - name: Set env
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-    - name: Test
-      run: |
-        echo $RELEASE_VERSION
-        echo ${{ env.RELEASE_VERSION }}
-    #- name : publishing
-    #  run:
-    #    gh release create
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - name: install gtest library
+              run: sudo apt-get install libgtest-dev
+            - uses: actions/checkout@v1
+            - name: create build files
+              run: mkdir build && cd build && cmake ..
+            - name: make
+              run: cd build && make
+            - name: packing
+              run: |
+                  mkdir isr 
+                  cp build/main isr/main
+                  zip -r isr.zip isr
+            - name: installing gh
+              run: |
+                  sudo apt install gh
+
+            - name: Set env
+              run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+            - name: Test
+              run: |
+                  echo $RELEASE_VERSION
+                  echo ${{ env.RELEASE_VERSION }}
+        #- name : publishing
+        #  run:
+        #    gh release create
