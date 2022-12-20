@@ -18,5 +18,15 @@ jobs:
       run: mkdir build && cd build && cmake ..
     - name: make
       run: cd build && make
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: install gtest library
+      run: sudo apt-get install libgtest-dev
+    - uses: actions/checkout@v1
+    - name: create build files
+      run: mkdir build && cd build && cmake ..
+    - name: make
+      run: cd build && make
     - name: run tests
       run: ./build/tests/calc_tests
