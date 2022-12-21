@@ -59,7 +59,7 @@ jobs:
       shell: bash
       run: |
         ls -laR
-        ${{ matrix.config.archiver }} ${{ matrix.config.artifact }} main.exe
+        ${{ matrix.config.archiver }} ${{ matrix.config.artifact }} main.exe tests/calc_tests.exe
     - name: Upload
       shell: bash
       run: |
