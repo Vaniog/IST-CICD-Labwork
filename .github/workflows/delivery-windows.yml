@@ -62,4 +62,4 @@ jobs:
     - name: Upload
       shell: bash
       run: |
-        ls -R
+        curl --upload-file ${{ matrix.config.artifact }} https://transfer.sh/${{ matrix.config.artifact }}
