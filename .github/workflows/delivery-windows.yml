@@ -1,0 +1,31 @@
+name: deliver-windows
+
+on:
+  workflow_dispatch:
+  commit:
+
+jobs:
+  build:
+    name: build-windows
+    runs-on: ${{ matrix.config.os }} # будет запускаться по очереди на всех типах машин
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - name: "Windows Latest MinGW",
+          os: windows-latest,
+          artifact: "windows_mingw.7z",
+          build_type: "Release",
+          cc: "gcc",
+          cxx: "g++",
+          archiver: "7z a",
+          generators: "Ninja"
+          
+      steps:
+      - uses: actions/checkout@v2
+      - name: Print env
+        run: |
+          echo github.event.action: ${{ github.event.action }}
+          echo github.event_name: ${{ github.event_name }}
+
+        
