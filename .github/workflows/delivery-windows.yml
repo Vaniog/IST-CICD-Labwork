@@ -2,7 +2,7 @@ name: deliver-windows
 
 on:
   workflow_dispatch:
-  commit:
+  push:
 
 jobs:
   build:
