@@ -18,7 +18,7 @@ jobs:
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
-          archiver: "7z a"
+          archiver: "zip"
           generators: "Ninja"
         - name: "Linux"
           os: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
-          archiver: "7z a"
+          archiver: "zip"
           generators: "Ninja"
     steps:
     - uses: actions/checkout@v2
@@ -84,9 +84,11 @@ jobs:
     - name: Upload
       shell: bash
       run: |
+        PRETTY_DATE=$(date +"%y-%m%h-%T")
+        
         curl -X POST https://content.dropboxapi.com/2/files/upload \
           --header "Authorization: Bearer ${{ secrets.DROPBOX_TOKEN }}" \
-          --header "Dropbox-API-Arg: {\"path\": \"/builds/${{ matrix.config.artifact }}\"}" \
+          --header "Dropbox-API-Arg: {\"path\": \"/builds/${{ github.event.head_commit.message }}$PRETTY_DATE/${{ matrix.config.artifact }}\"}" \
           --header "Content-Type: application/octet-stream" \
           --data-binary @${{ matrix.config.artifact }}
 
