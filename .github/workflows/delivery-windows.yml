@@ -63,4 +63,9 @@ jobs:
     - name: Upload
       shell: bash
       run: |
-        curl --upload-file ${{ matrix.config.artifact }} https://transfer.sh/${{ matrix.config.artifact }}
+        curl -X POST https://content.dropboxapi.com/2/files/upload \
+          --header "Authorization: Bearer ${TOKEN}" \
+          --header "Dropbox-API-Arg: {\"path\": \"/builds/${{ matrix.config.artifact }}\"}" \
+          --header "Content-Type: application/octet-stream" \
+          --data-binary @${{ matrix.config.artifact }}
+
