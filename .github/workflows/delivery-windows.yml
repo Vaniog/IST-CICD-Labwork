@@ -20,7 +20,7 @@ jobs:
           cxx: "g++"
           archiver: "7z a"
           generators: "Ninja"
-        - name: "Ubuntu Latest"
+        - name: "Linux"
           os: ubuntu-latest
           artifact: "linux.7z"
           build_type: "Release"
@@ -41,7 +41,13 @@ jobs:
         choco install ninja cmake
         ninja --version
         cmake --version        
-
+    - name: Install dependecies on linux
+      if: startsWith(matrix.config.os, 'ubuntu')
+      run: |
+        sudo apt-get install ninja-build
+        ninja --version
+        cmake --version        
+    
     - name: Configure
       shell: bash
       run: |
