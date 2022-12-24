@@ -14,15 +14,15 @@ jobs:
         config:
         - name: "Windows Latest MinGW"
           os: windows-latest
-          artifact: "windows_mingw.7z"
+          artifact: "windows.zip"
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
-          archiver: "zip"
+          archiver: "7z a"
           generators: "Ninja"
         - name: "Linux"
           os: ubuntu-latest
-          artifact: "linux.7z"
+          artifact: "linux.zip"
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
