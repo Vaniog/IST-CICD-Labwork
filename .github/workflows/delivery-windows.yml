@@ -69,11 +69,18 @@ jobs:
         cmake --install . --strip
         ls -R  
 
-    - name: Pack
+    - name: Pack (Windows)
+      if: startsWith(matrix.config.os, 'windows')
       shell: bash
       run: |
-        ls -laR
         ${{ matrix.config.archiver }} ${{ matrix.config.artifact }} main.exe tests/calc_tests.exe
+      
+    - name: Pack (Linux)
+      if: startsWith(matrix.config.os, 'ubuntu')
+      shell: bash
+      run: |
+        ${{ matrix.config.archiver }} ${{ matrix.config.artifact }} main tests/calc_tests
+        
     - name: Upload
       shell: bash
       run: |
