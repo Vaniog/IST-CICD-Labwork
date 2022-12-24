@@ -20,6 +20,14 @@ jobs:
           cxx: "g++"
           archiver: "7z a"
           generators: "Ninja"
+        - name: "Ubuntu Latest"
+          os: ubuntu-latest
+          artifact: "linux.7z"
+          build_type: "Release"
+          cc: "gcc"
+          cxx: "g++"
+          archiver: "7z a"
+          generators: "Ninja"
     steps:
     - uses: actions/checkout@v2
     - name: Print env
