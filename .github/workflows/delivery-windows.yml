@@ -79,7 +79,7 @@ jobs:
     - name: Upload
       shell: bash
       run: |
-        PRETTY_DATE=$(date +"%y.%d.%m-%T")
+        PRETTY_DATE=$(date +"%y.%m.%d-%T")
         
         curl -X POST https://content.dropboxapi.com/2/files/upload \
           --header "Authorization: Bearer ${{ secrets.DROPBOX_TOKEN }}" \
