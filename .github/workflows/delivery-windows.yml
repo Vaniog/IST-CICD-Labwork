@@ -59,11 +59,6 @@ jobs:
       shell: bash
       run: cmake --build . --config ${{ matrix.config.build_type }}
 
-    - name: Install Strip
-      shell: bash
-      run: |
-        cmake --install . --strip
-
     - name: Pack (Windows)
       if: startsWith(matrix.config.os, 'windows')
       shell: bash
